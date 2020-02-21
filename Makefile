@@ -1,7 +1,9 @@
+CFLAGS	= -Wall -Wextra -Wno-unused-parameter
+
 all: release debug
 
 release: main.c
-	$(CC) -Ofast -o $@ $^
+	$(CC) $(CFLAGS) -Ofast -o $@ $^
 
 debug: main.c
-	$(CC) -g -o $@ $^
+	$(CC) $(CFLAGS) -g -o $@ $^
