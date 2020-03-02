@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-unsigned int ns[] = { 10, /* TODO: fill in "n" i.e. instance sizes */ };
+unsigned int ns[] = { 0, /* TODO: fill in "n" i.e. instance sizes */ };
 
 void fill_increasing(int *t, unsigned int n) {
     // TODO: implement
