@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-unsigned int ns[] = { 10, /* TODO: fill in "n" i.e. instance sizes */ };
+unsigned int ns[] = { 10, 100, 1000, 10000, 20000, 30000, 40000, 50000, 60000 /* TODO: fill in "n" i.e. instance sizes */ };
 
 void fill_increasing(int *t, unsigned int n) {
     unsigned int i;
@@ -14,22 +14,21 @@ void fill_increasing(int *t, unsigned int n) {
 
 void fill_decreasing(int *t, unsigned int n) {
     unsigned int i;
-    for(i = n; i > 0; i--) {
-        t[i] = i;
+    for(i = 0; i < n; i++) {
+        t[i] = n - i;
     }
 }
 
 void fill_vshape(int *t, unsigned int n) {
-    int begin = 0;
-    int end = n - 1;
-    unsigned int temp = n;
-
-    while(end - begin > 1) {
-        t[begin] = temp--;
-        begin++;
-        t[end] = temp--;
-        end--;
+    int i, j;
+    i = 0;
+    j = n - 1;
+    int numOfElements = n;
+    while(i < j) {
+        t[i++] = numOfElements--;
+        t[j--] = numOfElements--;
     }
+    // 10 8 6 4 2 1 3 5 7 9
 }
 
 void swap(int *src, int *dest) {
