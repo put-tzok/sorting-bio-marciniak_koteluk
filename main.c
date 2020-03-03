@@ -32,8 +32,31 @@ void fill_vshape(int *t, unsigned int n) {
     }
 }
 
+void swap(int *src, int *dest) {
+    int temp = *src;
+    *src = *dest;
+    *dest = temp;
+}
+
+int find_min(int *t, unsigned int b, unsigned int n) {
+    unsigned int i;
+    int minIndex = b;
+    int minEl = t[b];
+    for(i = b; i < n - 1; i++) {
+        if(t[i + 1] < minEl) {
+            minIndex = i + 1;
+            minEl = t[i + 1];
+        }
+    }
+    return minIndex;
+}
+
 void selection_sort(int *t, unsigned int n) {
-    // TODO: implement
+    unsigned int i;
+    for(i = 0; i < n; i++) {
+        int index = find_min(t, i, n);
+        swap(&t[i], &t[index]);
+    }
 }
 
 void insertion_sort(int *t, unsigned int n) {
