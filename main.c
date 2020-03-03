@@ -6,15 +6,30 @@
 unsigned int ns[] = { 10, /* TODO: fill in "n" i.e. instance sizes */ };
 
 void fill_increasing(int *t, unsigned int n) {
-    // TODO: implement
+    unsigned int i;
+    for(i = 0; i < n; i++) {
+        t[i] = i;
+    }
 }
 
 void fill_decreasing(int *t, unsigned int n) {
-    // TODO: implement
+    unsigned int i;
+    for(i = n; i > 0; i--) {
+        t[i] = i;
+    }
 }
 
 void fill_vshape(int *t, unsigned int n) {
-    // TODO: implement
+    int begin = 0;
+    int end = n - 1;
+    unsigned int temp = n;
+
+    while(end - begin > 1) {
+        t[begin] = temp--;
+        begin++;
+        t[end] = temp--;
+        end--;
+    }
 }
 
 void selection_sort(int *t, unsigned int n) {
