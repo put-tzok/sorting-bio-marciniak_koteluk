@@ -3,7 +3,14 @@
 #include <stdlib.h>
 #include <time.h>
 
-unsigned int ns[] = { 10, 100, 1000, 10000, 20000, 30000, 40000, 50000, 60000 /* TODO: fill in "n" i.e. instance sizes */ };
+// TEMPORARY
+void heap_add(int* heap, int* size, int el);
+void heap_up(int* heap, int index);
+int heap_poll(int* heap, int* size);
+void heap_down(int* heap, int index, int* size);
+void heap_sort(int *t, unsigned int n);
+
+unsigned int ns[] = { 10, 100, 1000, 10000, 20000, 30000, 40000, 50000, 60000  /* TODO: fill in "n" i.e. instance sizes */ };
 
 void fill_increasing(int *t, unsigned int n) {
     unsigned int i;
@@ -66,8 +73,49 @@ void quick_sort(int *t, unsigned int n) {
     // TODO: implement
 }
 
+void heap_add(int* heap, int* size, int el) {
+    heap[*size] = el;
+    heap_up(heap, *size);
+    *size = *size + 1;
+}
+
+void heap_up(int* heap, int index) {
+    if(index > 0) {
+        int parent = (index - 1) / 2;
+        if(heap[index] < heap[parent]) {
+            swap(&heap[index], &heap[parent]);
+            heap_up(heap, parent);
+        } 
+    }
+}
+
+int heap_poll(int* heap, int* size) {
+    int el = heap[0];
+    *size = *size - 1;
+    heap[0] = heap[*size];
+    heap_down(heap, 0, size);
+    return el;
+}
+
+void heap_down(int* heap, int index, int* size) {
+    int l = index * 2 + 1;
+    int r = index * 2 + 2;
+
+    if(l >= *size) return;
+    int min = r >= *size || heap[l] < heap[r] ? l : r;
+
+    if(heap[min] < heap[index]) {
+        swap(&heap[min], &heap[index]);
+        heap_down(heap, min, size);
+    }
+}
+
 void heap_sort(int *t, unsigned int n) {
-    // TODO
+    int* heap = malloc(sizeof(int) * n);
+    int size = 0;
+    unsigned int i;
+    for(i = 0; i < n; i++) heap_add(heap, &size, t[i]);
+    for(i = 0; i < n; i++) t[i] = heap_poll(heap, &size);
 }
 
 void fill_random(int *t, unsigned int n) {
@@ -112,10 +160,10 @@ void is_sorted(int *t, unsigned int n) {
 
 void (*fill_functions[])(int *, unsigned int) = { fill_random, fill_increasing, fill_decreasing, fill_vshape };
 void (*check_functions[])(int *, unsigned int) = { is_random, is_increasing, is_decreasing, is_vshape };
-void (*sort_functions[])(int *, unsigned int) = { selection_sort, insertion_sort, quick_sort, heap_sort };
+void (*sort_functions[])(int *, unsigned int) = { selection_sort, heap_sort, insertion_sort, quick_sort };
 
 char *fill_names[] = { "Random", "Increasing", "Decreasing", "V-Shape" };
-char *sort_names[] = { "SelectionSort", "InsertionSort", "QuickSort", "HeapSort" };
+char *sort_names[] = { "SelectionSort", "HeapSort", "InsertionSort", "QuickSort" };
 
 int main() {
     for (unsigned int i = 0; i < sizeof(sort_functions) / sizeof(*sort_functions); i++) {
