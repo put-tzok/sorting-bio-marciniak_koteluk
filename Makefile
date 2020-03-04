@@ -1,9 +1,9 @@
-CFLAGS	= -Wall -Wextra -Wno-unused-parameter
+CFLAGS	= -Wall -Wextra -Wno-unused-parameter -std=c11
 
 all: release debug
 
-release: main.c
+release: Source/main.c Source/sorting.c Source/benchmark.c
 	$(CC) $(CFLAGS) -Ofast -o $@ $^
 
-debug: main.c
+debug: Source/main.c Source/sorting.c Source/benchmark.c
 	$(CC) $(CFLAGS) -g -o $@ $^
