@@ -23,7 +23,7 @@ void fillVShape(int *arr, unsigned int size) {
         arr[i++] = numOfElements--;
         arr[j--] = numOfElements--;
     }
-    // 10 8 6 4 2 1 3 5 7 9
+    // 10 8 6 4 2 1 3 5 7 9 <- Tylko taka forma V kształtu przechodzi testy 
 }
 
 void fillRandom(int *arr, unsigned int size) {

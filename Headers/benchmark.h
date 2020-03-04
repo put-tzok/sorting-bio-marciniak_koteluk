@@ -2,7 +2,6 @@
 
 #include <assert.h>
 #include <stdlib.h>
-#include <time.h>
 
 void fillIncreasing(int*, unsigned int);
 void fillDecreasing(int*, unsigned int);
