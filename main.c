@@ -4,7 +4,7 @@
 #include "Headers/sorting.h"
 #include "Headers/benchmark.h"
 
-unsigned int ns[] = { 10, 100, 1000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 1000000 };
+unsigned int ns[] = { 10, /* 100, 1000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 1000000 */ };
 
 void (*fill_functions[])(int *, unsigned int) = { fillRandom, fillIncreasing, fillDecreasing, fillVShape };
 void (*check_functions[])(int *, unsigned int) = { isRandomTest, isIncreasingTest, isDecreasingTest, isVShapeTest };

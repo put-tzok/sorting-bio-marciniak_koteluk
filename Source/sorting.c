@@ -63,7 +63,9 @@ void selectionSort(int *arr, unsigned int size) {
         swap(&arr[i], &arr[index]);
     }
 }
+
 void insertionSort(int* arr, unsigned int size) { return; }
+
 void quickSort(int* arr, unsigned int size) { return; }
 
 void heapSort(int *arr, unsigned int arrSize) {
