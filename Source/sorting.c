@@ -1,5 +1,51 @@
 #include "../Headers/sorting.h"
 
+void insertion_sort(int *t, unsigned int n) {
+    int j, i, key;
+    for (j=1; j< n-1; j++){
+        key = t[j];
+        i = j - 1;
+        while (i>= 0 && t[i]> key){
+            t[i+1]= t[i];
+            i = i -1;
+        }
+        t[j+1]= key;
+    }
+}
+
+int partition (int *tab, int first, int last){
+    int pivot = tab[last];
+    int i = first - 1;
+    for (int j = first; j < last; j++){
+        if (tab[j] <= pivot){
+            i = i + 1;
+            swap(&tab[i], &tab[j]);
+        }
+    i = i +1;
+    swap(&tab[i], &tab[last]);
+    return i;
+    }
+}
+
+int partition_random (int *tab, int first, int last){
+    srand(time(NULL));
+    int i= first + rand()%(last - first);
+    swap(&tab[i], &tab[last]);
+    return partition(tab, first, last);
+}
+
+void sort (int *tab, int first, int last){
+    if (first < last){
+        int q = partition(tab, first, last);
+        sort(tab, first, q -1);
+        sort(tab, q + 1, last);
+    }
+}
+
+void quick_sort(int *t, unsigned int n) {
+    sort(t, 0, n-1);
+}
+
 void swap(int *src, int *dest) {
     int temp = *src;
     *src = *dest;
@@ -32,6 +78,7 @@ void upHeapify(int* heap, int index) {
             swap(&heap[index], &heap[parent]);
             upHeapify(heap, parent);
         } 
+        } czesc_Oliwia
     }
 }
 
@@ -48,7 +95,8 @@ void downHeapify(int* heap, int index, int* size) {
     int rightChild = index * 2 + 2;
 
     if(leftChild >= *size) return;
-    int minItem = rightChild >= *size || heap[leftChild] < heap[rightChild] ? leftChild : rightChild; // TODO: Może zamienić to na ify bo nie jest specjalnie czytelne
+    int minItem = rightChild >= *size || heap[leftChild] < heap[rightChild] ? leftChild : rightChild; // TODO: MoÅ¼e zamieniÄ to na ify bo nie jest specjalnie czytelne
+    int minItem = rightChild >= *size || heap[leftChild] < heap[rightChild] ? leftChild : rightChild; // TODO: Mo¿e zamieniæ to na ify bo nie jest specjalnie czytelne
 
     if(heap[minItem] < heap[index]) {
         swap(&heap[minItem], &heap[index]);
