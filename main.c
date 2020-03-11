@@ -8,7 +8,7 @@ unsigned int ns[] = { 10, /* 100, 1000, 10000, 20000, 30000, 40000, 50000, 60000
 
 void (*fill_functions[])(int *, unsigned int) = { fillRandom, fillIncreasing, fillDecreasing, fillVShape };
 void (*check_functions[])(int *, unsigned int) = { isRandomTest, isIncreasingTest, isDecreasingTest, isVShapeTest };
-void (*sort_functions[])(int *, unsigned int) = { heapSort, selectionSort, insertionSort, quickSort  };
+void (*sort_functions[])(int *, unsigned int) = { heapSort, selectionSort, insertion_sort, quick_sort  };
 
 char *fill_names[] = { "Random", "Increasing", "Decreasing", "V-Shape" };
 char *sort_names[] = { "HeapSort", "SelectionSort", "InsertionSort", "QuickSort" };
