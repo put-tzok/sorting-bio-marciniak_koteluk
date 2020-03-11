@@ -1,17 +1,17 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include "Headers/sorting.h"
-#include "Headers/benchmark.h"
 
-unsigned int ns[] = { 10, /* 100, 1000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 1000000 */ };
+unsigned int ns[] = { 10, /* TODO: fill in "n" i.e. instance sizes */ };
 
-void (*fill_functions[])(int *, unsigned int) = { fillRandom, fillIncreasing, fillDecreasing, fillVShape };
-void (*check_functions[])(int *, unsigned int) = { isRandomTest, isIncreasingTest, isDecreasingTest, isVShapeTest };
-void (*sort_functions[])(int *, unsigned int) = { heapSort, selectionSort, insertionSort, quickSort  };
+void (*fill_functions[])(int *, unsigned int) = { fill_random, fill_increasing, fill_decreasing, fill_vshape };
+void (*check_functions[])(int *, unsigned int) = { is_random, is_increasing, is_decreasing, is_vshape };
+void (*sort_functions[])(int *, unsigned int) = { selection_sort, insertion_sort, quick_sort, heap_sort };
 
 char *fill_names[] = { "Random", "Increasing", "Decreasing", "V-Shape" };
-char *sort_names[] = { "HeapSort", "SelectionSort", "InsertionSort", "QuickSort" };
+char *sort_names[] = { "SelectionSort", "InsertionSort", "QuickSort", "HeapSort" };
 
 int main() {
     for (unsigned int i = 0; i < sizeof(sort_functions) / sizeof(*sort_functions); i++) {
@@ -31,7 +31,7 @@ int main() {
                 clock_t begin = clock();
                 sort(t, n);
                 clock_t end = clock();
-                isSortedTest(t, n);
+                is_sorted(t, n);
 
                 printf("%s\t%s\t%u\t%f\n", sort_names[i], fill_names[j], n, (double)(end - begin) / (double) CLOCKS_PER_SEC);
                 free(t);
