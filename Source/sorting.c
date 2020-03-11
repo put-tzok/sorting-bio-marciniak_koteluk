@@ -13,12 +13,6 @@ void insertion_sort(int *t, unsigned int n) {
     }
 }
 
-void swap (int *a, int *b){
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
-}
-
 int partition (int *tab, int first, int last){
     int pivot = tab[last];
     int i = first - 1;
@@ -83,7 +77,8 @@ void upHeapify(int* heap, int index) {
         if(heap[index] < heap[parent]) {
             swap(&heap[index], &heap[parent]);
             upHeapify(heap, parent);
-        }
+        } 
+        } czesc_Oliwia
     }
 }
 
@@ -100,7 +95,8 @@ void downHeapify(int* heap, int index, int* size) {
     int rightChild = index * 2 + 2;
 
     if(leftChild >= *size) return;
-    int minItem = rightChild >= *size || heap[leftChild] < heap[rightChild] ? leftChild : rightChild; // TODO: Mo�e zamieni� to na ify bo nie jest specjalnie czytelne
+    int minItem = rightChild >= *size || heap[leftChild] < heap[rightChild] ? leftChild : rightChild; // TODO: MoÅ¼e zamieniÄ to na ify bo nie jest specjalnie czytelne
+    int minItem = rightChild >= *size || heap[leftChild] < heap[rightChild] ? leftChild : rightChild; // TODO: Mo¿e zamieniæ to na ify bo nie jest specjalnie czytelne
 
     if(heap[minItem] < heap[index]) {
         swap(&heap[minItem], &heap[index]);
