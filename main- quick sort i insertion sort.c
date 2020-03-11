@@ -54,6 +54,13 @@ int partition (int *tab, int first, int last){
     }
 }
 
+int partition_random (int *tab, int first, int last){
+    srand(time(NULL));
+    int i= first + rand()%(last - first);
+    swap(&tab[i], &tab[last]);
+    return partition(tab, first, last);
+}
+
 void sort (int *tab, int first, int last){
     if (first < last){
         int q = partition(tab, first, last);
