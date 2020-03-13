@@ -19,17 +19,17 @@ int findMin(int *arr, unsigned int startingIndex, unsigned int size) {
     return minIndex;
 }
 
-int partition (int *tab, int first, int last){
+int partition (int* tab, int first, int last){
     int pivot = tab[last];
     int i = first - 1;
-    for (int j = first; j < last; j++){
-        if (tab[j] <= pivot){
+    for (int j = first; j <= last; j++){
+        if (tab[j] < pivot){
             i = i + 1;
             swap(&tab[i], &tab[j]);
         }
-    i = i +1;
-    swap(&tab[i], &tab[last]);
     }
+    i = i + 1;
+    swap(&tab[i], &tab[last]);
     return i;
 }
 
@@ -88,20 +88,20 @@ void selectionSort(int *arr, unsigned int size) {
 void insertion_sort(int *t, unsigned int n) {
     unsigned int j;
     int i, key;
-    for (j=1; j< n-1; j++){
+    for (j=1; j< n; j++){
         key = t[j];
         i = j - 1;
         while (i>= 0 && t[i]> key){
             t[i+1]= t[i];
             i = i -1;
         }
-        t[j+1]= key;
+        t[i+1]= key;
     }
 }
 
-void sort (int *tab, int first, int last){
+void sort (int* tab, int first, int last){
     if (first < last){
-        int q = partition(tab, first, last);
+        int q = partition_random(tab, first, last);
         sort(tab, first, q -1);
         sort(tab, q + 1, last);
     }
