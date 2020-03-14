@@ -7,4 +7,4 @@ release: main.c Source/sorting.c Source/benchmark.c
 	$(CC) $(CFLAGS) -Ofast -o $@ $^
 
 debug: main.c Source/sorting.c Source/benchmark.c
-	$(CC) $(CFLAGS) -g -o $@ $^
+	$(CC) $(CFLAGS) -g -Og -std=c11 -o $@ $^

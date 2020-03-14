@@ -12,7 +12,7 @@ void (*sort_functions[])(int *, unsigned int) = { selectionSort, heapSort, inser
 
 char *fill_names[] = { "Random", "Increasing", "Decreasing", "V-Shape" };
 char *sort_names[] = { "SelectionSort", "HeapSort", "InsertionSort", "QuickSort" };
-
+ 
 int main() {
     for (unsigned int i = 0; i < sizeof(sort_functions) / sizeof(*sort_functions); i++) {
         void (*sort)(int *, unsigned int) = sort_functions[i];
